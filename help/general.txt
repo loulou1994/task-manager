@@ -1,0 +1,4 @@
+ ################################### HELP CENTER #####################################
+
+ Welcome to the help center. This is where you need to know about all of the cli's main
+ functionality.

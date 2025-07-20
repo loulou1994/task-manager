@@ -1,0 +1,7 @@
+ ################################### Update Help ###########################################
+
+ This the help reference for the update command. Get to know what all the command offers on
+ the table.
+
+ Usage: update ID DESCRIPTION
+ Update a given task by id and update description field. No Options
