@@ -8,10 +8,13 @@ update_task(){
 	local new_description="$2"
 
 	# validate variables
-	if [[ $task_id = "-h" || $task_id = "--help" || $total_args != 2]]; then
+	if [[ $task_id = "-h" || $task_id = "--help" ]]; then
+		cat "$help_dir"
+		return 0
+
+	elif [[ "$total_args != 2" ]]; then
 		cat "$help_dir"
 		return 1
-	fi
 
 	# check if entry file exists
 	if [[ ! -f $DATA_FILE ]]; then

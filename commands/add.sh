@@ -3,9 +3,10 @@
 add_task() {
   local help_dir="$HELP_DIR/add.txt"
 
+  local total_args="$#"
   local description="$1"
 
-  if [[ -z "$description" ]]; then
+  if [[ -z "$description" || "$total_args" -gt 1 ]]; then
 	cat $help_dir
 	return 1
   elif [[ "$description" == "--help" || "$description" == "-h" ]]; then

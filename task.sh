@@ -38,7 +38,7 @@ case "$COMMAND" in
 	  ;;
 	*)
 		echo "X unknown command: $COMMAND"
-		cat "$HELP_DIR/general.txt" 
+		cat "$HELP_DIR/general.txt"
 		exit 1
 		;;
 	esac

@@ -1,0 +1,6 @@
+################################### HELP CENTER #####################################
+
+ This is the help reference for the delete command. Get to know what all the command offers..
+
+ Usage: Delete task_id
+ Delete a task with the id of task_id. No Options

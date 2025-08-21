@@ -1,4 +1,4 @@
  ################################### HELP CENTER #####################################
 
- Welcome to the help center. This is where you need to know about all of the cli's main
- functionality.
+ Welcome to the help center. All that needs to be known on the task manager program can be found right in this
+ hub. Starting up from the fundamental features up to the little and unsignificant options

@@ -1,7 +1,6 @@
  ################################### Add Help ###########################################
 
- This the help reference for the add command. Get to know what all the command offers on
- the table.
+ This is the help reference for the add command. Get to know what all the command offers..
  
  Usage: add DESCRIPTION
  Adds a new task with the inserted description. No Options
