@@ -13,4 +13,4 @@ new_fun(){
 
 testing=3
 
-echo "[3,11,11]" | jq 'map(select(. == 11)) | length'
+echo "[3,11,11]" | jq 'map(select(. != 3))'
