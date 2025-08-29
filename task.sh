@@ -1,11 +1,10 @@
 #!/usr/bin/bash
 
-# Load Configurations
-source "$(dirname "$0")/config.sh"
+SCRIPT_PATH="$(readlink -f "$0")"
+PROJECT_DIR="$(dirname "$SCRIPT_PATH")"
 
-# Load helper functions
-# source "$(dirname "$0")/helpers/io.sh"
-# source "$(dirname "$0")/helpers/utils.sh"
+# Load Configurations
+source "$PROJECT_DIR/config.sh"
 
 # Dispatch commands
 COMMAND=$1

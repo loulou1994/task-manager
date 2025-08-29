@@ -10,7 +10,7 @@ delete_task(){
 	local total_args="$#"
 	local task_id="$1"
 
-        if [[ $task_id = "-h" || $task_id = "--help" ]]; then
+        if [[ "$task_id" = "-h" || "$task_id" = "--help" ]]; then
 		cat "$help_file"
                 return 0
 
@@ -24,6 +24,9 @@ delete_task(){
 	if [[ "$found" == 0 ]];then
 		cat "help_file"
 		return 1
+	fi
 
-	echo "$task_id"
+	jq '. | map(select(.id != "task_id"))' "$DATA_FILE" > "$DATA_FILE.temp" && mv "$DATA_FILE.temp" "$DATA_FILE"
+
+	echo "Task \"$task_id\" deleted successfully ^o^"
 }
