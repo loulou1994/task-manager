@@ -5,6 +5,7 @@ PROJECT_DIR="$(dirname "$SCRIPT_PATH")"
 
 # Load Configurations
 source "$PROJECT_DIR/config.sh"
+source "$PROJECT_DIR/utils/io.sh"
 
 # Dispatch commands
 COMMAND=$1

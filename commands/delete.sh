@@ -20,14 +20,12 @@ delete_task(){
 	fi
 
 	local found=$(jq 'map(select(.id == "'"$task_id"'")) | length' "$DATA_FILE")
-	
-	echo "$found"
 
 	if [[ "$found" == 0 ]];then
 		cat "$help_file"
 		return 1
 	fi
-	
+
 	jq '. | map(select(.id != "'"$task_id"'"))' "$DATA_FILE" > "$DATA_FILE.temp" && mv "$DATA_FILE.temp" "$DATA_FILE"
 
 	echo "Task \"$task_id\" deleted successfully ^o^"
