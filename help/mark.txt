@@ -1,0 +1,7 @@
+ ################################### Add Help ###########################################
+
+ This is the help reference for the mark command. Get to know what all the command offers..
+ 
+ Usage: mark (in-progress|done|todo) TASKID
+ Change the state of a given task. No Options
+

@@ -28,6 +28,10 @@ case "$COMMAND" in
 	  source "$COMMAND_DIR/delete.sh"
 	  delete_task "$@"
 	  ;;
+	mark)
+	  source "$COMMAND_DIR/mark.sh"
+	  mark_task "$@"
+	  ;;
 	help|"")
 	  if [[ -n "$1" ]]; then
 		HELP_FILE="$HELP_DIR/$1.txt"

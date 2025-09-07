@@ -1,8 +1,6 @@
 #!/usr/bin/bash
 
 delete_task(){
-	source "$UTILS_DIR/io.sh"
-
 	local help_file
 	help_file="$HELP_DIR/general.txt"
 	[[ -f "$HELP_DIR/delete.txt" ]] && help_file="$HELP_DIR/delete.txt"
