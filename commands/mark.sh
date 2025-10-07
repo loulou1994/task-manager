@@ -19,15 +19,22 @@ mark_task(){
 		  return 1
 	esac
 
-	# check if task exists
-	local found=$(jq --arg id "$task_id" 'map(select(.id == $id)) | length' "$DATA_FILE")
+	local found_task=$(jq --arg id "$task_id" '.[] | select(.id == $id)' "$DATA_FILE")
+	local unchanged_task=$(echo "$found_task" | jq --arg status "$status" \
+			'select(.status == $status)' \
+			)
 
-	echo "$found"
-	if [[ "$found" -eq 0 ]]; then
-		cat "$help_file"
+	if [[ -z "$found_task" ]]; then
+		echo "No such task with id $task_id"
+		return 1
+
+	elif [[ -n "$unchanged_task" ]]; then
+		echo "Task is already set to the requestd status"
 		return 1
 	fi
 
 	jq --arg id "$task_id" --arg status "$status" 'map(if .id == $id then .status = $status else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
+
+	echo "Task '$task_id' updated successfully ^o^"
 	return 0
 }
