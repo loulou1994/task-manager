@@ -1,29 +1,31 @@
 #! /usr/bin/bash
 
-new_fun(){
-	ran_num=5
+new_func_task(){
+	first_var="$1"
 
-	(( ran_num > 5 && ran_num < 6))
+	echo "$first_var"
 }
 
-#if new_fun; then
-#	echo "resolved"
-#else
-#	echo "unresolved"
-#fi
+source "./utils/io.sh"
 
-DATA_FILE="$HOME/workspace/task-cli/data/tasks.json"
+COMMAND="$1"
+#shift
 
-task_id=1757976233608195057
+#case "$COMMAND" in
+#	new_func|FO|FA)
+#		echo "it'a new_func or FO or FA"
+#		"${COMMAND}_task" "$@"
+#		;;
+#	FO)
+#		echo "another FO thing"
+#		;;
+#	*)
+#		echo "invalide data".
+#		exit 1
+#		;;
+#esac
 
-result=$(jq --arg id "$task_id" \
-	'.[] | select(.id == $id)' "$DATA_FILE" \
-	)
+char_count="$(echo wc -m COMMAND)"
 
-if [[ -z $result ]]; then
-	echo "no data was found"
-fi
-
-#echo "$result"
-
+echo "$char_count"
 exit 0

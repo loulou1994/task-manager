@@ -2,20 +2,12 @@
 
 update_task(){
 	local help_dir="$HELP_DIR/update.txt" 
-
 	local total_args="$#"
 	local task_id="$1"
 	local new_description="$2"
 
-	# Check if json file exists
-	task_file_exists "$DATA_FILE" || return 1
-
-	# validate variables
-	if [[ $task_id == "-h" || $task_id == "--help" ]]; then
-		cat "$help_dir"
-		return 0
-
-	elif [[ "$total_args" != 2 ]]; then
+	# validate args
+	if [[ "$total_args" != 2 ]]; then
 		cat "$help_dir"
 		return 1
 	fi

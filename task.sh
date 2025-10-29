@@ -1,20 +1,34 @@
 #!/usr/bin/bash
 
-SCRIPT_PATH="$(readlink -f "$0")"
-PROJECT_DIR="$(dirname "$SCRIPT_PATH")"
+PROJECT_DIR="$(dirname $(readlink -f "$0") )"
 
-# Load Configurations
+# Load Configurations & helpers
 source "$PROJECT_DIR/config.sh"
-source "$PROJECT_DIR/utils/io.sh"
-
+source "$UTILS_DIR/io.sh"
+	
 # Dispatch commands
 COMMAND=$1
+
+check_command_exists "$COMMAND" || exit 1
+show_help_guide "$@" && exit 0
+
 shift # remove the command so the $@ holds the remaining arguments
 
 case "$COMMAND" in
 	add)
 	  source "$COMMAND_DIR/add.sh"
 	  add_task "$@"
+	  ;;
+	mark|update|delete)
+	  source "$COMMAND_DIR/$COMMAND.sh"
+
+	  if check_file_exists "$DATA_FILE"; then
+		"${COMMAND}_task" "$@"
+	  fi
+
+	  echo "You must create the json file $DATA_FILE before making any changes"
+	  exit 1
+
 	  ;;
 	list)
 	  source "$COMMAND_DIR/list.sh"

@@ -1,4 +1,4 @@
- ################################### Add Help ###########################################
+ ################################### Mark Help ###########################################
 
  This is the help reference for the mark command. Get to know what all the command offers..
  

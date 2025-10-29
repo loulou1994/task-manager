@@ -1,12 +1,10 @@
 #!/usr/bin/bash
 
 mark_task(){
-	local help_file="$HELP_DIR/general.txt"
+	local help_file="$HELP_DIR/mark.txt"
 	local status="$1"
 	local task_id="$2"
 	local total_args="$#"
-
-	[[ -f "$HELP_DIR/mark.txt" ]] && help_file="$HELP_DIR/mark.txt"
 
 	[[ "$#" -ne 2 ]] && cat "$help_file" && return 1
 

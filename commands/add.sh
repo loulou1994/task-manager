@@ -6,12 +6,9 @@ add_task() {
   local total_args="$#"
   local description="$1"
 
-  if [[ -z "$description" || "$total_args" -gt 1 ]]; then
+  if [[ "$total_args" -eq 1 ]]; then
 	cat $help_dir
 	return 1
-  elif [[ "$description" == "--help" || "$description" == "-h" ]]; then
-	cat $help_dir
-	return 0
   fi
 
   # Create data directory and file if they don't exist
