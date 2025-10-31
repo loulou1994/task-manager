@@ -1,23 +1,21 @@
 #!/usr/bin/bash
 
-check_file_exists(){
+check_file_exists() {
 	local file=$1
-
-	echo "hello file, $DATA_FILE"
 
 	if [[ ! -f "$file" ]]; then
 		echo "X File not found"
 		return 1
 	fi
 
-		return 0
+	return 0
 }
 
-check_command_exists(){
+check_command_exists() {
 	local cmd="$1"
 	local script_path="$COMMAND_DIR/$cmd.sh"
 
-	[[ -f "$script_path" ]] || { 
+	[[ -f "$script_path" ]] || {
 		echo "Command not found: $cmd"
 		cat "$HELP_DIR/general.txt"
 		return 1
@@ -26,13 +24,14 @@ check_command_exists(){
 	return 0
 }
 
-show_help_guide(){
+show_help_guide() {
 	local cmd="$1"
+	local help_file="$([[ -e "$HELP_DIR/$cmd.txt" ]] && echo "$HELP_DIR/$cmd.txt" || echo "$HELP_DIR/general.txt" )"
 	shift
 
 	for arg in "$@"; do
 		[[ "$arg" == "--help" || "$arg" == "-h" ]] && {
-			cat "$HELP_DIR/$cmd.txt"
+			cat "$help_file"
 			return 0
 		}
 	done

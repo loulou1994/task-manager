@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-new_func_task(){
+new_func_task() {
 	first_var="$1"
 
 	echo "$first_var"
@@ -25,7 +25,8 @@ COMMAND="$1"
 #		;;
 #esac
 
-char_count="$(echo wc -m COMMAND)"
+char_count="$(echo wc -m "$COMMAND")"
 
-echo "$char_count"
+new_var="$([[ -f "help/general" ]] && echo "what's up" || echo "nothing really" )"
+
 exit 0
