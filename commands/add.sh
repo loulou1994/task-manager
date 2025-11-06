@@ -6,7 +6,7 @@ add_task() {
   local total_args="$#"
   local description="$1"
 
-  if [[ "$total_args" -eq 1 ]]; then
+  if [[ "$total_args" -eq 0 ]]; then
     cat $help_dir
     return 1
   fi

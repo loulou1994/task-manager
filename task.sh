@@ -9,7 +9,7 @@ source "$UTILS_DIR/io.sh"
 # Dispatch commands
 COMMAND=$1
 
-check_command_exists "$COMMAND" || exit 1
+check_command_exists "$COMMAD" || exit 1
 show_help_guide "$@" && exit 0
 
 shift # remove the command so the $@ holds the remaining arguments
@@ -19,7 +19,7 @@ add)
 	source "$COMMAND_DIR/add.sh"
 	add_task "$@"
 	;;
-mark | update | delete)
+mark | update | delete | list)
 	source "$COMMAND_DIR/$COMMAND.sh"
 
 	if check_file_exists "$DATA_FILE"; then
@@ -29,22 +29,22 @@ mark | update | delete)
 	echo "You must create the json file $DATA_FILE before making any changes"
 	exit 1
 	;;
-list)
-	source "$COMMAND_DIR/list.sh"
-	list_tasks "$@"
-	;;
-update)
-	source "$COMMAND_DIR/update.sh"
-	update_task "$@"
-	;;
-delete)
-	source "$COMMAND_DIR/delete.sh"
-	delete_task "$@"
-	;;
-mark)
-	source "$COMMAND_DIR/mark.sh"
-	mark_task "$@"
-	;;
+# list)
+# 	source "$COMMAND_DIR/list.sh"
+# 	list_tasks "$@"
+# 	;;
+# update)
+# 	source "$COMMAND_DIR/update.sh"
+# 	update_task "$@"
+# 	;;
+# delete)
+# 	source "$COMMAND_DIR/delete.sh"
+# 	delete_task "$@"
+# 	;;
+# mark)
+# 	source "$COMMAND_DIR/mark.sh"
+# 	mark_task "$@"
+# 	;;
 help | "")
 	if [[ -n "$1" ]]; then
 		HELP_FILE="$HELP_DIR/$1.txt"

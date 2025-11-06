@@ -15,7 +15,7 @@ check_command_exists() {
 	local cmd="$1"
 	local script_path="$COMMAND_DIR/$cmd.sh"
 
-	[[ -f "$script_path" ]] || {
+	[[ ! -f "$script_path" ]] || {
 		echo "Command not found: $cmd"
 		cat "$HELP_DIR/general.txt"
 		return 1
