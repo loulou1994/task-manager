@@ -27,12 +27,10 @@ COMMAND="$1"
 # 		exit 1
 # 		;;
 # esac
+test_return() {
+	return 1
+}
 
-empty_var=""
-
-[[ -n "$empty_var" ]] && echo "empty vars"
-# char_count="$(echo wc -m "$COMMAND")"
-
-# new_var="$([[ -f "help/general" ]] && echo "what's up" || echo "nothing really" )"
-
-exit 0
+if ! test_return; then
+	echo "true check"
+fi

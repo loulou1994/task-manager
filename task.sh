@@ -9,7 +9,7 @@ source "$UTILS_DIR/io.sh"
 # Dispatch commands
 COMMAND=$1
 
-check_command_exists "$COMMAD" || exit 1
+# check_command_exists "$COMMAD" || exit 1
 show_help_guide "$@" && exit 0
 
 shift # remove the command so the $@ holds the remaining arguments
@@ -24,10 +24,10 @@ mark | update | delete | list)
 
 	if check_file_exists "$DATA_FILE"; then
 		"${COMMAND}_task" "$@"
+	else
+		echo "You must create the json file $DATA_FILE before making any changes"
 	fi
-
-	echo "You must create the json file $DATA_FILE before making any changes"
-	exit 1
+	
 	;;
 # list)
 # 	source "$COMMAND_DIR/list.sh"
@@ -47,15 +47,17 @@ mark | update | delete | list)
 # 	;;
 help | "")
 	if [[ -n "$1" ]]; then
-		HELP_FILE="$HELP_DIR/$1.txt"
-		[[ -f "$HELP_FILE" ]] && cat "$HELP_FILE" || echo "No help found for '$1'"
+		help_file="$HELP_DIR/$1.txt"
+		[[ -f "$help_file" ]] && cat "$help_file" || echo "No help found for '$1'"
 	else
 		cat "$HELP_DIR/general.txt"
 	fi
 	;;
 *)
-	echo "X unknown command: $COMMAND"
+	echo "Command not found: $COMMAND"
 	cat "$HELP_DIR/general.txt"
 	exit 1
 	;;
 esac
+
+exit 0
